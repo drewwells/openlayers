@@ -39,14 +39,16 @@
     }
 
     function test_Util_Array(t) {
-        t.plan( 2 );
+        t.plan( 3 );
 
-        var array = new Array(1,2,3,4,4,5);
+        var array = new Array(1,2,3,4,4,5),
+            ret = '';
 
         OpenLayers.Util.removeItem(array, 3);
         t.eq( array.toString(), "1,2,4,4,5", "Util.removeItem works on one element");    
-        OpenLayers.Util.removeItem(array, 4);
+        ret = OpenLayers.Util.removeItem(array, 4);
         t.eq( array.toString(), "1,2,5", "Util.removeItem works on more than one element ");    
+        t.eq( ret, array, "Util.removeItem returns Array as well as modifying it" );
     }
     
     function test_Util_pagePosition(t) {
